@@ -2,8 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import CategoriesList from '../views/CategoriesList.vue'
 import SubCategoriesList from '../views/SubCategoriesList'
-import store from '../store'
-import NotFound from "../views/NotFound";
+import store from '@/store'
 
 Vue.use(VueRouter)
 
@@ -26,15 +25,6 @@ const routes = [
           next()
         })
     }
-  },
-  {
-    path: '/404',
-    name: '404',
-    component: NotFound
-  },
-  {
-    path: '*',
-    redirect: { name: '404' }
   }
 ]
 

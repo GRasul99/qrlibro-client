@@ -4,8 +4,8 @@
       :to="{ name: 'subcategories-list', params: { id: category.id } }"
     >
       {{ category.id }}
-      {{ category.name }}
     </router-link>
+    <br />
   </div>
 </template>
 

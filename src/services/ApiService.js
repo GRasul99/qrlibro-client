@@ -15,5 +15,11 @@ export default {
   },
   getCategory(id) {
     return apiService.get('/category/' + id)
+  },
+  getBooks() {
+    return apiService.get('/books')
+  },
+  getBook(id) {
+    return apiService.get('/books/' + id)
   }
 }
