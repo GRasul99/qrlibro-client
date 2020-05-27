@@ -15,7 +15,7 @@
       </router-link>
     </div>
     <button @click="logtoconsole">Console</button>
-    <BookMedia />
+    <BookMedia v-for="book in booksWithUDC" :key="book.id" :book="book" />
   </div>
 </template>
 
@@ -64,7 +64,7 @@ export default {
     }),
       ApiService.getBooks().then(response => {
         this.books = response.data
-    })
+      })
   },
   computed: {
     subCategories() {
@@ -74,7 +74,7 @@ export default {
     },
     booksWithUDC() {
       return this.books.filter(book => {
-        return this.category.udc_id.indexOf(book.id)
+        return String(book.udc).startsWith(String(this.category.udc_id))
       })
     }
   },

@@ -1,11 +1,17 @@
 <template>
   <div>
-    {{ book.name }}
+    {{ book.author }} {{ book.title }}
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    book: {
+      type: Object
+    }
+  }
+}
 </script>
 
 <style lang="scss"></style>
