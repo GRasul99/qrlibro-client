@@ -15,7 +15,9 @@
       </router-link>
     </div>
     <button @click="logtoconsole">Console</button>
-    <BookMedia v-for="book in booksWithUDC" :key="book.id" :book="book" />
+    <div class="books-grid">
+      <BookMedia v-for="book in booksWithUDC" :key="book.id" :book="book" />
+    </div>
   </div>
 </template>
 
@@ -87,4 +89,10 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  text-align: center;
+}
+</style>

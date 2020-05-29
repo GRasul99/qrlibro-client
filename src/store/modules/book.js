@@ -8,6 +8,9 @@ export const state = {
 }
 
 export const mutations = {
+  ADD_ORDER(state, book) {
+    state.books.push(book)
+  },
   SET_BOOKS(state, books) {
     state.books = books
   },
@@ -17,6 +20,15 @@ export const mutations = {
 }
 
 export const actions = {
+  orderBook({ commit }, order) {
+    return ApiService.orderBook(order)
+      .then(() => {
+        commit('ADD_ORDER', order)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  },
   fetchBooks({ commit }) {
     return ApiService.getBooks()
       .then(response => {

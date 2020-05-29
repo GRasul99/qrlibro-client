@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const apiService = axios.create({
   baseURL: 'https://libro.pythonanywhere.com',
+  // baseURL: 'http://localhost:3000',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
@@ -21,5 +22,8 @@ export default {
   },
   getBook(id) {
     return apiService.get('/books/' + id)
+  },
+  orderBook(book) {
+    return apiService.post('/orders', book)
   }
 }
