@@ -1,11 +1,11 @@
 <template>
   <div>
     {{ book.author }} {{ book.title }} {{ book.id }}
+    <datetime type="datetime" v-model="orderTime"></datetime>
     <div class="buttons">
       <button class="btn download">
         Download
       </button>
-
       <button class="btn order" @click="order">
         Order
       </button>
@@ -16,6 +16,11 @@
 <script>
 import axios from 'axios'
 export default {
+  data() {
+    return {
+      orderTime: ''
+    }
+  },
   props: {
     book: {
       type: Object,
@@ -31,8 +36,9 @@ export default {
     async order() {
       try {
         await axios.post(`https://libro.pythonanywhere.com/orders/`, {
-          user: 1,
-          book_id: this.book.id
+          user: 3,
+          book_id: this.book.id,
+          time_of_order: this.orderTime
         })
       } catch (e) {
         console.log(e)
